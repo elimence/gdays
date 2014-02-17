@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="top"
+    android:gravity="top"
+    android:orientation="vertical"
+    android:windowAnimationStyle="@android:style/Animation.Translucent"
+    android:windowBackground="@android:color/transparent"
+    android:windowIsTranslucent="true">
+
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:text="Droid Assist"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_width="fill_parent"
+        android:background="@android:color/holo_blue_dark"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/myTextView"
+        android:text="Auto Respondder Active"
+        android:gravity="center"
+        android:textColor="@android:color/holo_green_dark"
+        android:layout_width="fill_parent"
+        android:layout_centerVertical="true"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/infoText"
+        android:text="info"
+        android:gravity="center"
+        android:textColor="@android:color/holo_green_dark"
+        android:layout_width="fill_parent"
+        android:layout_above="@id/myTextView"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/reject"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@android:color/holo_blue_bright"
+            android:layout_marginRight="2dp"
+            android:text="Reject Call"/>
+
+        <Button
+            android:id="@+id/close"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@android:color/holo_blue_bright"
+            android:layout_marginLeft="2dp"
+            android:text="Close Droid"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

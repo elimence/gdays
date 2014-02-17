@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GDaysLab</string>
+    <string name="hello_world">Hello G guys!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_incomming_call">IncommingCallActivity</string>
+
+</resources>
