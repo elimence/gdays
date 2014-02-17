@@ -11,9 +11,11 @@ public class CallReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        telephonyManager.listen(new MyPhoneStateListener(context), PhoneStateListener.LISTEN_CALL_STATE);
+        MyPhoneStateListener myPhoneListener = new MyPhoneStateListener(context);
 
+        TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        telephonyManager.listen(myPhoneListener, PhoneStateListener.LISTEN_CALL_STATE);
+        telephonyManager.listen(myPhoneListener, PhoneStateListener.LISTEN_NONE);
     }
 
 }

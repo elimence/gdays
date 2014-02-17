@@ -4,70 +4,60 @@ import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.TextView;
 
+import com.gdays.app.ext.MyPrefs_;
+
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.OnActivityResult;
+import org.androidannotations.annotations.OptionsItem;
+import org.androidannotations.annotations.OptionsMenu;
+import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.sharedpreferences.Pref;
 
+@OptionsMenu(R.menu.main)
 @EActivity(R.layout.activity_main)
 public class MainActivity extends Activity {
+
+    public static boolean missed = true;
+
+    @ViewById
+    public TextView responseCount;
+
+    @Pref public static MyPrefs_ preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-
-        if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }
 
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+    @AfterViews
+    public void initViews() {
+        responseCount.setText(""+ preferences.responseCount().get());
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+
+    // Option menu actions
+    @OptionsItem
+    void action_settings() {
+        Intent i = new Intent(this, Settings_.class);
+        startActivity(i);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            return rootView;
-        }
-    }
 
     @Override
     public void onStop() {
@@ -75,10 +65,16 @@ public class MainActivity extends Activity {
         finish();
     }
 
-//    @Override
-//    public void onPause() {
-//        super.onPause();
-//        finish();
-//    }
+    public static void increment() {
+        if (missed) {
+            int count = preferences.responseCount().get();
+            preferences.responseCount().put(count + 1);
+            missed = false;
+        }
+    }
+
+    public static int getCount() {
+        return preferences.responseCount().get();
+    }
 
 }

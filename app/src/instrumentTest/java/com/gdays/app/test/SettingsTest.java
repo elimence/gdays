@@ -1,14 +1,16 @@
+package com.gdays.app.test;
+
 import android.test.ActivityInstrumentationTestCase2;
 
 import com.gdays.app.R;
 import com.robotium.solo.*;
 import com.gdays.app.MainActivity_;
 
-public class ExplicitTest extends
+public class SettingsTest extends
         ActivityInstrumentationTestCase2<MainActivity_> {
 	private Solo solo;
 
-	public ExplicitTest() {
+	public SettingsTest() {
 		super(MainActivity_.class);
 	}
 

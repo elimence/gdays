@@ -26,14 +26,6 @@
         android:layout_centerVertical="true"
         android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/infoText"
-        android:text="info"
-        android:gravity="center"
-        android:textColor="@android:color/holo_green_dark"
-        android:layout_width="fill_parent"
-        android:layout_above="@id/myTextView"
-        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_alignParentBottom="true"
@@ -42,23 +34,13 @@
         android:padding="10dp"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/reject"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:background="@android:color/holo_blue_bright"
-            android:layout_marginRight="2dp"
-            android:text="Reject Call"/>
 
         <Button
             android:id="@+id/close"
-            android:layout_width="0dp"
+            android:layout_width="fill_parent"
             android:layout_height="40dp"
-            android:layout_weight="1"
             android:background="@android:color/holo_blue_bright"
-            android:layout_marginLeft="2dp"
-            android:text="Close Droid"/>
+            android:text="Dismiss &amp; Answer Call"/>
 
     </LinearLayout>
 
