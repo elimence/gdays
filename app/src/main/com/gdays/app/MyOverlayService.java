@@ -1,28 +1,26 @@
 package com.gdays.app;
 
 
+import com.gdays.app.ext.OverlayService;
 
-public class SampleOverlayService extends OverlayService {
+public class MyOverlayService extends OverlayService {
 
-    public static SampleOverlayService instance;
+    public static MyOverlayService instance;
 
-    private SampleOverlayView overlayView;
+    private MyOverlayView overlayView;
 
     @Override
     public void onCreate() {
         super.onCreate();
-
         instance = this;
-
-        overlayView = new SampleOverlayView(this);
+        overlayView = new MyOverlayView(this);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-
         if (overlayView != null) {
-            overlayView.destory();
+            overlayView.destroy();
         }
 
     }

@@ -33,7 +33,7 @@
         </receiver>
 
         <service
-            android:name="com.gdays.app.SampleOverlayService"
+            android:name=".MyOverlayService"
             android:enabled="true"
             android:exported="true" >
         </service>

@@ -21,7 +21,7 @@ public class MyPhoneStateListener extends PhoneStateListener {
         switch (state) {
             case TelephonyManager.CALL_STATE_IDLE:
                 //when Idle i.e no call
-                SampleOverlayService.stop();
+                MyOverlayService.stop();
                 Toast.makeText(context, "Phone state Idle: "+incomingNumber, Toast.LENGTH_LONG).show();
                 break;
 
@@ -33,7 +33,7 @@ public class MyPhoneStateListener extends PhoneStateListener {
 
             case TelephonyManager.CALL_STATE_RINGING:
                 //when Ringing
-                Intent intent1 = new Intent(context, SampleOverlayService.class);
+                Intent intent1 = new Intent(context, MyOverlayService.class);
                 context.startService(intent1);
                 Toast.makeText(context, "Phone state Ringing: "+incomingNumber, Toast.LENGTH_LONG).show();
                 break;

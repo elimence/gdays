@@ -4,10 +4,13 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 
+import com.gdays.app.ext.OverlayService;
+import com.gdays.app.ext.OverlayView;
 
-public class SampleOverlayView extends OverlayView {
 
-    public SampleOverlayView(OverlayService service) {
+public class MyOverlayView extends OverlayView {
+
+    public MyOverlayView(OverlayService service) {
         super(service, R.layout.activity_incomming_call);
     }
 
@@ -21,7 +24,7 @@ public class SampleOverlayView extends OverlayView {
         close.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                SampleOverlayService.stop();
+                MyOverlayService.stop();
             }
         });
     }
