@@ -27,6 +27,8 @@ public class MyOverlayView extends OverlayView {
                 MyOverlayService.stop();
             }
         });
+
+//        Button
     }
 
 }

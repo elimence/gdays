@@ -6,6 +6,7 @@ import com.gdays.app.ext.OverlayService;
 public class MyOverlayService extends OverlayService {
 
     public static MyOverlayService instance;
+    public static String callerID;
 
     private MyOverlayView overlayView;
 
