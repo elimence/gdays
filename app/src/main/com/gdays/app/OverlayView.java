@@ -1,13 +1,10 @@
 package com.gdays.app;
 
 
-
-
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
@@ -17,23 +14,11 @@ public abstract class OverlayView extends RelativeLayout {
     protected WindowManager.LayoutParams layoutParams;
 
     private int layoutResId;
-    private int notificationId = 0;
 
-    public OverlayView(OverlayService service, int layoutResId, int notificationId) {
+    public OverlayView(OverlayService service, int layoutResId) {
         super(service);
 
         this.layoutResId = layoutResId;
-        this.notificationId = notificationId;
-
-        this.setLongClickable(true);
-
-        this.setOnLongClickListener(new View.OnLongClickListener() {
-
-            @Override
-            public boolean onLongClick(View v) {
-                return onTouchEvent_LongPress();
-            }
-        });
 
         load();
     }
@@ -152,21 +137,7 @@ public abstract class OverlayView extends RelativeLayout {
         // called when Overlay is visible.
     }
 
-    protected boolean showNotificationHidden() {
-        // Override this to configure the notification to remain even when the
-        // overlay is invisible.
-        return true;
-    }
 
-    protected boolean onVisibilityToChange(int visibility) {
-        // Catch changes to the Overlay's visibility in order to animate
-
-        return true;
-    }
-
-    protected View animationView() {
-        return this;
-    }
 
     protected void hide() {
         // Set visibility, but bypass onVisibilityToChange()
@@ -179,94 +150,6 @@ public abstract class OverlayView extends RelativeLayout {
         super.setVisibility(View.VISIBLE);
     }
 
-    @Override
-    public void setVisibility(int visibility) {
-        if (visibility == View.VISIBLE) {
-            getService().moveToForeground(notificationId, !showNotificationHidden());
-        } else {
-            getService().moveToBackground(notificationId, !showNotificationHidden());
-        }
 
-        if (getVisibility() != visibility) {
-            if (onVisibilityToChange(visibility)) {
-                super.setVisibility(visibility);
-            }
-        }
-    }
-
-    protected int getLeftOnScreen() {
-        int[] location = new int[2];
-
-        getLocationOnScreen(location);
-
-        return location[0];
-    }
-
-    protected int getTopOnScreen() {
-        int[] location = new int[2];
-
-        getLocationOnScreen(location);
-
-        return location[1];
-    }
-
-    protected boolean isInside(View view, int x, int y) {
-        // Use this to test if the X, Y coordinates of the MotionEvent are
-        // inside of the View specified.
-
-        int[] location = new int[2];
-
-        view.getLocationOnScreen(location);
-
-        if (x >= location[0]) {
-            if (x <= location[0] + view.getWidth()) {
-                if (y >= location[1]) {
-                    if (y <= location[1] + view.getHeight()) {
-                        return true;
-                    }
-                }
-            }
-        }
-
-        return false;
-    }
-
-    protected void onTouchEvent_Up(MotionEvent event) {
-
-    }
-
-    protected void onTouchEvent_Move(MotionEvent event) {
-
-    }
-
-    protected void onTouchEvent_Press(MotionEvent event) {
-
-    }
-
-    public boolean onTouchEvent_LongPress()
-    {
-        return false;
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-
-        if (event.getActionMasked() == MotionEvent.ACTION_DOWN) {
-
-            onTouchEvent_Press(event);
-
-        } else if (event.getActionMasked() == MotionEvent.ACTION_UP) {
-
-            onTouchEvent_Up(event);
-
-        } else if (event.getActionMasked() == MotionEvent.ACTION_MOVE) {
-
-            onTouchEvent_Move(event);
-
-        }
-
-        return super.onTouchEvent(event);
-
-    }
 
 }
