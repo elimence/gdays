@@ -7,25 +7,25 @@ import com.gdays.app.Settings_;
 import com.robotium.solo.*;
 import com.gdays.app.MainActivity_;
 
-public class SettingsTest extends
+public class MiscTest extends
         ActivityInstrumentationTestCase2<MainActivity_> {
-	private Solo solo;
+    private Solo solo;
 
-	public SettingsTest() {
-		super(MainActivity_.class);
-	}
+    public MiscTest() {
+        super(MainActivity_.class);
+    }
 
-	public void setUp() throws Exception {
-		solo = new Solo(getInstrumentation());
-		getActivity();
-	}
+    public void setUp() throws Exception {
+        solo = new Solo(getInstrumentation());
+        getActivity();
+    }
 
-	@Override
-	public void tearDown() throws Exception {
-		solo.finishOpenedActivities();
-	}
+    @Override
+    public void tearDown() throws Exception {
+        solo.finishOpenedActivities();
+    }
 
-	public void testRun() {
+    public void testRun() {
 
         solo.clickOnMenuItem("Settings");
         solo.sleep(1000); // give it time to change activity
