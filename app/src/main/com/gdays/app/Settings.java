@@ -2,6 +2,7 @@ package com.gdays.app;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -75,6 +76,11 @@ public class Settings extends Activity {
             Log.e("Settings", npe.fillInStackTrace().toString(), npe);
         }
         return text;
+    }
+
+    @Override
+    public void onBackPressed() {
+        NavUtils.navigateUpFromSameTask(this);
     }
 
 }
