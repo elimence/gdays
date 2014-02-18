@@ -1,8 +1,6 @@
 package com.gdays.app;
 
 
-import android.content.Context;
-
 import com.gdays.app.ext.OverlayService;
 
 public class MyOverlayService extends OverlayService {

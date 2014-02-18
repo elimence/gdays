@@ -27,8 +27,10 @@ import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 
+//TODO:
+//Enhance MainActivity with the EActivity Annotation element
+
 @OptionsMenu(R.menu.main)
-@EActivity(R.layout.activity_main)
 public class MainActivity extends Activity {
 
     public static boolean missed = true;
@@ -42,12 +44,26 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // TODO:
+        // Remove this line after enhancing MainActivity
+        // But only if you pass the layout to the annotation tag
+        setContentView(R.layout.activity_main);
+
+        // TODO:
+        // Move this line to a method annotated with @AfterViews
+        // This is necessary because when you get elements with @ViewById
+        // They aren't accessible at the time onCreate is being called
+        responseCount.setText(""+ preferences.responseCount().get());
+
     }
 
 
+    // TODO:
+    // The @AfterViews annotation designates methods that will be called
+    // after the views are laid out
+    // Implement this method to
     @AfterViews
     public void initViews() {
-        responseCount.setText(""+ preferences.responseCount().get());
     }
 
 

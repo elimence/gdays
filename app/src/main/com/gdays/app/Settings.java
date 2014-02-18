@@ -50,12 +50,17 @@ public class Settings extends Activity {
         }
     }
 
-    @Click
-    public void btn_save_text(View view) {
-        String response_text = responder_text.getText().toString();
-        preferences.edit().responseText().put(response_text).apply();
-        Toast.makeText(this, "Response text saved", Toast.LENGTH_SHORT).show();
-    }
+
+
+    // TODO:
+    // Implement onClick method for button btn_save_text
+    // Using AA's @Click annotation
+    // onClick the following should be executed
+    // 1. String response_text = responder_text.getText().toString();
+    // 2. preferences.edit().responseText().put(response_text).apply();
+    // 3. Toast.makeText(this, "Response text saved", Toast.LENGTH_SHORT).show();
+
+
 
     public static boolean getAutorespond() {
         boolean flag = true;
